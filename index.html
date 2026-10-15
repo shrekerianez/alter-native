@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#0b0b0f" />
+  <meta name="description" content="AlterNative — бесплатные узкоспециализированные приложения. Альтернатива по сути. Native по исполнению." />
+  <title>AlterNative</title>
+
+  <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
+  <link rel="manifest" href="./manifest.webmanifest" />
+  <link rel="stylesheet" href="./style.css" />
+</head>
+
+<body>
+  <div class="ambient ambient-a" aria-hidden="true"></div>
+  <div class="ambient ambient-b" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <a class="brand" href="#top" aria-label="AlterNative — на главную">
+      <span class="brand-mark">A</span>
+      <span class="brand-name">AlterNative</span>
+    </a>
+
+    <nav class="nav" aria-label="Основная навигация">
+      <a href="#idea">Идея</a>
+      <a href="#apps">Приложения</a>
+      <a href="#principles">Принципы</a>
+    </nav>
+
+    <a class="header-action" href="#apps">Смотреть проекты</a>
+  </header>
+
+  <main id="top">
+    <section class="hero section">
+      <div class="hero-badge">AlterNative · PWA</div>
+
+      <h1>
+        Альтернатива<br />
+        <span class="accent-text">по сути.</span>
+      </h1>
+
+      <p class="hero-subtitle">Native по исполнению.</p>
+
+      <p class="hero-copy">
+        Бесплатные узкоспециализированные приложения без лишнего шума:
+        понятные, быстрые и созданные под конкретную задачу.
+      </p>
+
+      <div class="hero-actions">
+        <a class="button button-primary" href="#apps">Открыть приложения</a>
+        <a class="button button-secondary" href="#idea">Что такое AlterNative</a>
+      </div>
+
+      <div class="device-stage" aria-label="Пример интерфейса AlterNative">
+        <div class="device">
+          <div class="device-island"></div>
+          <div class="device-screen">
+            <div class="app-topbar">
+              <div>
+                <span class="eyebrow">AlterNative</span>
+                <h2>Калькулятор</h2>
+              </div>
+              <span class="mini-icon">%</span>
+            </div>
+
+            <div class="demo-card">
+              <span>Сумма</span>
+              <strong>100 000 ₽</strong>
+            </div>
+
+            <div class="demo-grid">
+              <div class="demo-card compact">
+                <span>Комиссия</span>
+                <strong>15%</strong>
+              </div>
+              <div class="demo-card compact">
+                <span>Результат</span>
+                <strong>85 000 ₽</strong>
+              </div>
+            </div>
+
+            <button class="demo-button" type="button">Рассчитать</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="idea" class="section split-section">
+      <div class="section-label">01 · Идея</div>
+      <div class="split-content">
+        <h2>Не универсальный комбайн.<br />Нормальный инструмент.</h2>
+        <p>
+          AlterNative — это набор небольших приложений, каждое из которых
+          решает одну задачу хорошо. Без подписки ради кнопки, без перегруженных
+          меню и без необходимости изучать программу дольше, чем пользоваться ею.
+        </p>
+      </div>
+    </section>
+
+    <section id="apps" class="section">
+      <div class="section-heading">
+        <div>
+          <div class="section-label">02 · Приложения</div>
+          <h2>Один проект.<br />Много полезных инструментов.</h2>
+        </div>
+        <p>
+          Первые приложения AlterNative будут работать прямо в браузере,
+          устанавливаться на экран «Домой» и сохранять основные функции офлайн.
+        </p>
+      </div>
+
+      <div class="apps-grid">
+        <article class="app-card featured">
+          <div class="app-icon">%</div>
+          <div class="app-card-copy">
+            <span class="status">Первый релиз</span>
+            <h3>Калькулятор процентов</h3>
+            <p>
+              Расчёт суммы до и после вычета комиссии или процента.
+              Быстро, без таблиц и ручных формул.
+            </p>
+          </div>
+          <span class="card-arrow">↗</span>
+        </article>
+
+        <article class="app-card">
+          <div class="app-icon">▦</div>
+          <div class="app-card-copy">
+            <span class="status muted">В разработке</span>
+            <h3>Furniture</h3>
+            <p>Расчёты и инструменты для проектирования мебели.</p>
+          </div>
+        </article>
+
+        <article class="app-card">
+          <div class="app-icon">⌁</div>
+          <div class="app-card-copy">
+            <span class="status muted">Планируется</span>
+            <h3>Security</h3>
+            <p>Прикладные расчёты и рабочие инструменты для охранной деятельности.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="principles" class="section principles">
+      <div class="section-label">03 · Принципы</div>
+      <div class="principles-grid">
+        <article>
+          <span>01</span>
+          <h3>Понятно</h3>
+          <p>Интерфейс объясняет себя сам. Если нужна инструкция на сорок страниц, что-то пошло не туда.</p>
+        </article>
+        <article>
+          <span>02</span>
+          <h3>Быстро</h3>
+          <p>Минимум зависимостей, короткая загрузка и мгновенная реакция интерфейса.</p>
+        </article>
+        <article>
+          <span>03</span>
+          <h3>Доступно</h3>
+          <p>Основные инструменты бесплатны и запускаются с любого современного устройства.</p>
+        </article>
+        <article>
+          <span>04</span>
+          <h3>Как приложение</h3>
+          <p>PWA устанавливается на iPhone, iPad, Mac и другие устройства прямо из браузера.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section final-cta">
+      <span class="eyebrow">AlterNative</span>
+      <h2>Меньше лишнего.<br />Больше полезного.</h2>
+      <p>Альтернатива по сути. Native по исполнению.</p>
+      <a class="button button-primary" href="#top">Наверх</a>
+    </section>
+  </main>
+
+  <footer>
+    <span>© <span id="year"></span> AlterNative</span>
+    <span>Сделано для реальных задач.</span>
+  </footer>
+
+  <script src="./script.js"></script>
+</body>
+</html>
