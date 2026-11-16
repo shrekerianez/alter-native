@@ -1,0 +1,17 @@
+{
+  "id": "./",
+  "name": "AlterNative Stamp Manager · Duo",
+  "short_name": "Stamp Manager",
+  "description": "Печати, подписи и PDF на iPhone Duo",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#390b14",
+  "theme_color": "#390b14",
+  "lang": "ru",
+  "icons": [
+    {"src":"./assets/icon-192.png","sizes":"192x192","type":"image/png","purpose":"any maskable"},
+    {"src":"./assets/icon-512.png","sizes":"512x512","type":"image/png","purpose":"any"}
+  ]
+}

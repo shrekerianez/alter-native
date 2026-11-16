@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#390b14">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Stamp Manager">
+  <meta name="description" content="AlterNative Stamp Manager для iPhone Duo. Печати, подписи и PDF локально.">
+  <link rel="manifest" href="./manifest.webmanifest">
+  <link rel="apple-touch-icon" href="./assets/icon-180.png">
+  <link rel="icon" type="image/png" href="./assets/icon-192.png">
+  <link rel="stylesheet" href="./styles.css">
+  <title>AlterNative · Stamp Manager Duo</title>
+</head>
+<body>
+<div id="app" class="app pose-closed locked" aria-live="polite">
+  <section class="cover-scene" id="cover-scene" aria-label="Папка на подпись">
+    <div class="folder-cover leather-panel">
+      <div class="folder-edge"></div>
+      <div class="cover-corner top-right"></div><div class="cover-corner bottom-right"></div>
+      <div class="cover-head">
+        <div class="eyebrow">ALTER NATIVE</div>
+        <img class="crest" src="./assets/crest.svg" alt="Герб AlterNative">
+        <h1>НА ПОДПИСЬ</h1>
+        <div class="cover-sub">STAMP MANAGER</div>
+      </div>
+      <div class="strap"><div class="lock-symbol" id="lock-symbol"><span class="shackle"></span><span class="lock-body">♢</span></div></div>
+      <div class="cover-bottom">
+        <div class="folder-caption" id="folder-caption">ПАПКА ЗАПЕЧАТАНА</div>
+        <button id="unlock-btn" class="gold-button unlock-button" type="button">
+          <svg class="fingerprint" viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 10.5c0-4.3 3.3-7 7.5-7s7.5 2.7 7.5 7M7 10.5c0-3 2-4.6 5-4.6s5 1.6 5 4.6v2M10 10.8c0-1.5.7-2.1 2-2.1s2 .6 2 2.1v2.4c0 3.6-1.6 6-3.6 7.3M7 13.2c0 3.2-.5 5.2-1.7 7M17 15.2c-.3 3.3-1.4 5.4-3.2 7M12 12.4c0 3.3-.6 5.3-2.2 8.3"/></svg>
+          <span id="unlock-label">Разблокировать</span>
+        </button>
+        <div class="hint" id="cover-hint">Подтверждение личности через iOS</div>
+      </div>
+    </div>
+  </section>
+  <section class="workspace" id="workspace" aria-label="Редактор документов" inert>
+    <header class="topbar leather-panel">
+      <div class="brandline"><img src="./assets/crest.svg" alt="" class="brand-crest"><div><div class="brand-name">ALTER NATIVE</div><div class="brand-sub">STAMP MANAGER</div></div></div>
+      <button id="open-pdf" class="document-chip glass-button" type="button" title="Открыть PDF"><span class="document-icon">▤</span><span id="document-title">Открыть документ PDF</span><span class="chevron">⌄</span></button>
+      <div class="top-actions"><button id="undo" type="button" class="glass-button icon-button" aria-label="Отменить" title="Отменить">↶</button><button id="redo" type="button" class="glass-button icon-button" aria-label="Повторить" title="Повторить">↷</button><button id="save" type="button" class="gold-button save-button">Экспорт PDF</button><button id="more" type="button" class="glass-button icon-button" aria-label="Меню">⋯</button></div>
+    </header>
+    <div class="workgrid">
+      <aside class="library-panel leather-panel">
+        <div class="panel-heading"><div><span class="small-heading">БИБЛИОТЕКА</span><h2>Мои печати</h2></div><button class="square-button" id="add-stamp-header" aria-label="Добавить печать" title="Добавить печать">＋</button></div>
+        <div class="segments" role="tablist" aria-label="Фильтр библиотеки"><button class="segment active" data-filter="all" role="tab" aria-selected="true">Все</button><button class="segment" data-filter="stamp" role="tab">Печати</button><button class="segment" data-filter="signature" role="tab">Подписи</button></div>
+        <label class="search-box"><span aria-hidden="true">⌕</span><input id="library-search" type="search" placeholder="Поиск" autocomplete="off"></label>
+        <div class="stamp-grid" id="stamp-grid" aria-label="Элементы библиотеки"></div>
+        <div class="library-bottom"><button id="add-stamp" class="gold-button add-button">＋ &nbsp; Добавить изображение</button><p>Выберите печать и коснитесь PDF для её размещения.</p></div>
+      </aside>
+      <main class="document-panel">
+        <div class="empty-state" id="empty-state"><div class="empty-paper"><img src="./assets/crest.svg" alt=""/><div>НА ПОДПИСЬ</div><small>Добавьте PDF, чтобы начать работу</small></div><button id="empty-open" class="gold-button">Открыть PDF</button><button id="demo-open" class="plain-link">Открыть демонстрационный документ</button></div>
+        <div class="page-scroller hidden" id="page-scroller"><div id="page-sheet" class="page-sheet"><canvas id="page-canvas"></canvas><div id="overlay" class="overlay" aria-label="Размещённые печати"></div></div></div>
+        <div class="document-bottom"><div class="page-control"><button id="prev-page" aria-label="Предыдущая страница">‹</button><span id="page-count">0 из 0</span><button id="next-page" aria-label="Следующая страница">›</button></div><div class="status-small" id="status-small">Локально на устройстве</div><div class="zoom-controls"><button id="zoom-out" aria-label="Уменьшить">−</button><span id="zoom-value">100%</span><button id="zoom-in" aria-label="Увеличить">＋</button></div></div>
+      </main>
+      <aside class="action-rail leather-panel"><button id="rail-import" class="rail-button"><span>▱</span><small>Импорт</small></button><button id="rail-stamp" class="rail-button"><span>♙</span><small>Печать</small></button><button id="rail-sign" class="rail-button"><span>✒</span><small>Подпись</small></button><button id="rail-export" class="rail-button"><span>⇩</span><small>Экспорт</small></button><button id="rail-lock" class="rail-button rail-lock"><span>♙</span><small>Закрыть</small></button></aside>
+    </div>
+    <div id="properties" class="properties hidden"><div class="properties-title">Параметры элемента <button id="properties-close" aria-label="Закрыть">✕</button></div><div class="properties-row"><label for="rotation">Поворот</label><input id="rotation" type="range" min="-180" max="180" value="0"><span id="rotation-value">0°</span></div><div class="properties-row"><label for="opacity">Прозрачность</label><input id="opacity" type="range" min="10" max="100" value="100"><span id="opacity-value">100%</span></div><button id="delete-object" class="delete-button">Удалить с документа</button></div>
+  </section>
+  <section class="classified-screen leather-panel" id="classified-screen" aria-label="Папка запечатана" inert><div class="classified-left"><img src="./assets/crest.svg" alt=""><span>ALTER NATIVE</span></div><div class="classified-right"><div class="confidential-stamp">СОВЕРШЕННО<br>СЕКРЕТНО</div><div class="classified-lock">♙ &nbsp; ДОСТУП ЗАКРЫТ</div><button id="classified-unlock" class="gold-button">Разблокировать</button></div></section>
+</div>
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+<div class="modal-backdrop hidden" id="import-dialog"><div class="modal leather-panel"><button id="modal-close" class="modal-x" aria-label="Закрыть">✕</button><h2>Добавить в библиотеку</h2><p>Изображение печати или подписи в формате PNG, JPEG, WebP. Прозрачный PNG работает лучше всего.</p><div class="modal-actions"><button id="choose-stamp" class="gold-button">Печать</button><button id="choose-signature" class="gold-button">Подпись</button></div></div></div>
+<input id="pdf-file" type="file" accept=".pdf,application/pdf" hidden>
+<input id="stamp-file" type="file" accept="image/png,image/jpeg,image/webp" hidden>
+<script src="./app.js" defer></script>
+</body>
+</html>
