@@ -1,4 +1,4 @@
-/* AlterNative Stamp Manager Duo · 0.1.0 · no AI / no server */
+/* AlterNative Stamp Manager Duo · 0.2.0 · no AI / no server */
 'use strict';
 const $ = s => document.querySelector(s);
 const $$ = s => [...document.querySelectorAll(s)];
@@ -56,7 +56,7 @@ async function renderPage(){if(!state.pdfDoc||!state.authorized||state.pose!=='o
  const token=++renderCounter;
  try{let page=await state.pdfDoc.getPage(state.page);if(token!==renderCounter)return;
  let original=page.getViewport({scale:1});state.currentSize={width:original.width,height:original.height};
- let scroll=$('#page-scroller'),sheet=$('#page-sheet');let fit=Math.max(220,Math.min(760,scroll.clientWidth-18));let cssWidth=fit*state.zoom;sheet.style.width=cssWidth+'px';sheet.style.maxWidth='none';sheet.style.aspectRatio=`${original.width} / ${original.height}`;
+ let scroll=$('#page-scroller'),sheet=$('#page-sheet');let availableW=Math.max(220,scroll.clientWidth-40),availableH=Math.max(220,scroll.clientHeight-30);let fit=Math.min(availableW,availableH*original.width/original.height);let cssWidth=fit*state.zoom;sheet.style.width=cssWidth+'px';sheet.style.maxWidth='none';sheet.style.aspectRatio=`${original.width} / ${original.height}`;
  let factor=Math.min(2.5,(cssWidth/original.width)*(Math.min(devicePixelRatio||1,2)));let view=page.getViewport({scale:factor});
  let canvas=$('#page-canvas');if(pdfRenderTask){try{pdfRenderTask.cancel();await pdfRenderTask.promise;}catch{}}
  if(token!==renderCounter)return;canvas.width=Math.floor(view.width);canvas.height=Math.floor(view.height);
@@ -134,7 +134,7 @@ function setupEvents(){ $('#unlock-btn').addEventListener('click',unlock);$('#cl
  $('#save').addEventListener('click',exportPdf);$('#rail-export').addEventListener('click',exportPdf);$('#rail-stamp').addEventListener('click',()=>{state.filter='stamp';$$('.segment').find(b=>b.dataset.filter==='stamp')?.click();toast('Выберите печать слева');});$('#rail-sign').addEventListener('click',()=>{state.filter='signature';$$('.segment').find(b=>b.dataset.filter==='signature')?.click();toast('Выберите подпись слева');});
  $('#properties-close').addEventListener('click',()=>{state.selected=null;hideProps();renderOverlay();});$('#delete-object').addEventListener('click',()=>{record();state.placements=state.placements.filter(x=>x.id!==state.selected);state.selected=null;hideProps();renderOverlay();scheduleSave();});
  for(let id of ['rotation','opacity']){$('#'+id).addEventListener('pointerdown',record,{passive:true});$('#'+id).addEventListener('input',e=>{let obj=state.placements.find(s=>s.id===state.selected);if(!obj)return;if(id==='rotation'){obj.rotation=Number(e.target.value);$('#rotation-value').textContent=e.target.value+'°';}else{obj.opacity=Number(e.target.value)/100;$('#opacity-value').textContent=e.target.value+'%';}renderOverlay();scheduleSave();});}
- $('#more').addEventListener('click',()=>{toast('Stamp Manager Duo v0.1 · Обработка PDF локально. Блокировка пока не шифрует файлы.',5500);});
+ $('#more').addEventListener('click',()=>{toast('Stamp Manager Duo v0.2 · Обработка PDF локально. Блокировка пока не шифрует файлы.',5500);});
  window.addEventListener('keydown',e=>{if(e.key==='Escape'){state.tool=null;state.selected=null;hideProps();renderLibrary();renderOverlay();}if((e.metaKey||e.ctrlKey)&&e.key.toLowerCase()==='z'){e.preventDefault();e.shiftKey?redo():undo();}});
  window.addEventListener('resize',()=>{let old=state.pose;applyPose();if(old===state.pose&&state.pose==='open'&&state.authorized&&state.pdfDoc)renderPage();});
  navigator.devicePosture?.addEventListener?.('change',applyPose);

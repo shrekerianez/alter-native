@@ -6,3 +6,196 @@
 @media (horizontal-viewport-segments:2){.workgrid{grid-template-columns:env(viewport-segment-width 0 0) minmax(0,1fr) 68px}.library-panel{min-width:0}.page-scroller{scroll-padding-left:10px}}
 @media (device-posture:folded){.app.pose-open .workgrid{grid-template-columns:1fr 1fr}.app.pose-open .action-rail{position:absolute;right:14px;top:78px;bottom:68px;width:58px;z-index:3;background:#410c17ed}.app.pose-open .document-panel{margin-right:63px}}
 @media (prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important;animation:none!important}}
+
+/* AlterNative Duo v0.2: focused document workspace. Cover retains bespoke leather. */
+:root {
+  --ink:#231b1d;
+  --wine:#3a0e19;
+  --softgold:#d9aa68;
+  --document-canvas:#e9e9e8;
+}
+.app.pose-open.authenticated {
+  background: #e9e7e4;
+}
+.app.pose-open .workspace {
+  padding: 8px 8px 8px 10px;
+  gap: 8px;
+  background: #e7e4e1;
+}
+/* Calm top chrome; one strong primary action. */
+.app.pose-open .topbar {
+  min-height: 58px;
+  height: 58px;
+  flex-shrink: 0;
+  border-radius: 14px;
+  padding: 6px 12px;
+  gap: 8px;
+  box-shadow: 0 1px 6px #28080f29;
+}
+.app.pose-open .brandline { min-width: 147px; gap: 8px; }
+.app.pose-open .brand-crest { height: 36px; width: 36px; }
+.app.pose-open .brand-name { font-size: 10px; letter-spacing: .18em; }
+.app.pose-open .brand-sub { font-size: 8px; letter-spacing: .17em; }
+.app.pose-open .document-chip {
+  flex: 1; min-width: 0; max-width: none;
+  padding: 0 12px; min-height: 42px;
+  border-radius: 11px;
+  background: #fffaf116;
+  border: 1px solid #fae2b442;
+  box-shadow: none;
+}
+.app.pose-open .document-chip > span:nth-child(2) { font-size: 13px; }
+.app.pose-open .document-icon { font-size: 19px; color: #e4ba83; }
+.app.pose-open .top-actions { gap: 5px; }
+.app.pose-open .icon-button {
+  min-width: 39px; min-height: 40px; font-size: 21px;
+  border-radius: 11px; padding: 0 7px;
+  box-shadow: none; background: #fff9ee10;
+}
+.app.pose-open .save-button {
+  border-radius: 11px; min-height: 40px;
+  padding: 8px 15px; font-size: 13px;
+  box-shadow: 0 2px 3px #14030b52, inset 0 1px 0 #fffae3;
+}
+/* Display is for signing. Give the PDF the room it deserves. */
+.app.pose-open .workgrid {
+  grid-template-columns: clamp(196px, 19vw, 252px) minmax(0, 1fr) 62px;
+  gap: 8px;
+}
+.app.pose-open .library-panel {
+  border-radius: 15px;
+  padding: 13px 12px 11px;
+  border: 1px solid #754449;
+  background: linear-gradient(180deg,#471520e0,#260810ec), url('./assets/leather.webp') center / 540px, #320c16;
+  box-shadow: inset 0 1px #ffffff25, 0 1px 5px #210a1230;
+}
+.app.pose-open .panel-heading { margin-bottom: 12px; }
+.app.pose-open .small-heading { font-size: 9px; letter-spacing:.21em; color:#d6b68d; }
+.app.pose-open .panel-heading h2 { font-size: 19px; font-weight: 700; margin:4px 0 0; }
+.app.pose-open .square-button { min-height: 38px; min-width: 38px; font-size: 25px; border-radius: 11px; box-shadow:none; }
+.app.pose-open .segments { background:#18070c94; border-color:#965d5b5c; border-radius:11px; margin-bottom: 11px; padding:3px; }
+.app.pose-open .segment { font-size: 11px; padding: 9px 2px; border-radius: 9px; color:#f1dacf; }
+.app.pose-open .segment.active { background:#f7e9d8; color:#471420; box-shadow: none; }
+.app.pose-open .search-box { min-height:36px; margin-bottom: 12px; border-radius:10px; background:#ffffff16; border-color:#ffffff21; }
+.app.pose-open .search-box input { font-size: 13px; }
+.app.pose-open .stamp-grid {
+  grid-template-columns: repeat(2, minmax(0,1fr));
+  gap:8px;
+  padding: 2px;
+  overflow-y:auto;
+}
+.app.pose-open .stamp-tile {
+  aspect-ratio: .90;
+  display:flex; flex-direction: column;
+  justify-content: space-between; gap: 3px;
+  border: 2px solid #f8f6f3;
+  border-radius: 12px;
+  padding: 7px 5px 5px;
+  background: linear-gradient(150deg, #fff, #f9f7f3);
+  box-shadow: 0 2px 5px #16060b4a;
+}
+.app.pose-open .stamp-tile img { flex:1; min-height:0; width: 100%; max-height:calc(100% - 20px); object-fit:contain; }
+.app.pose-open .stamp-tile span {
+  opacity: 1; position: static; flex-shrink:0;
+  width:100%; padding: 1px 2px;
+  color:#75666a; background:transparent;
+  font-size: 9px; font-weight: 550;
+  text-overflow:ellipsis; overflow:hidden; white-space:nowrap;
+}
+.app.pose-open .stamp-tile.active { border-color:#ddac56; box-shadow: 0 0 0 2px #c88f45,0 3px 9px #10000060; }
+.app.pose-open .library-bottom { padding-top: 9px; }
+.app.pose-open .library-bottom p { font-size: 10px; color:#d3b6b1; margin: 8px 0 0; }
+.app.pose-open .add-button { min-height:40px; padding:8px 4px; font-size:11px; border-radius:11px; box-shadow:inset 0 1px #fff; }
+.app.pose-open .document-panel {
+  border-radius:15px; min-width:0; min-height:0;
+  border:1px solid #c8c6c5;
+  background: #e7e7e6;
+  box-shadow: 0 1px 5px #17090814;
+}
+.app.pose-open .page-scroller {
+  padding: 14px 20px 14px;
+  flex:1; min-height:0;
+  overflow:auto;
+  align-items:safe center;
+  justify-content:safe center;
+  background:
+    radial-gradient(ellipse at 50% 40%,#f2f2f0,#e2e0df 83%);
+  scroll-behavior:smooth;
+}
+.app.pose-open .page-sheet {
+  flex: none; max-width:none; background:#fff;
+  box-shadow: 0 9px 23px #2c1d2130,0 1px 2px #4a373c29;
+  border: 1px solid #ebe9e5;
+}
+.app.pose-open .page-sheet canvas { display:block; }
+.app.pose-open .document-bottom {
+  height:44px; flex: 0 0 44px;
+  background:#fffdfa;
+  color:#47383c;
+  border-top:1px solid #dbd7d3;
+  padding:5px 11px;
+}
+.app.pose-open .page-control,.app.pose-open .zoom-controls {
+  background:#f0eeeb; color:#3d3438; border-radius: 9px;
+  height:34px; gap:3px;
+}
+.app.pose-open .page-control button,.app.pose-open .zoom-controls button { color:#3d3438; font-weight:500; min-width:33px; }
+.app.pose-open .page-control span,.app.pose-open .zoom-controls span { font-size:12px; color:#4a3a3f; min-width:55px; text-align:center; }
+.app.pose-open .status-small { color:#817779; font-size:10px; }
+.app.pose-open .action-rail {
+  background: #fffdfa;
+  border: 1px solid #d5d1cd;
+  border-radius: 15px;
+  gap: 5px;
+  padding: 7px 4px;
+  box-shadow:0 1px 6px #16040d18;
+}
+.app.pose-open .rail-button {
+  flex: 0 0 auto;
+  height: 78px;
+  min-height: 0;
+  width:100%;
+  border:1px solid transparent;
+  border-radius: 10px;
+  background: transparent;
+  color:#5f4d52;
+  gap:5px;
+  padding: 7px 0 5px;
+}
+.app.pose-open .rail-button svg { width:25px; height:25px; stroke:currentColor; fill:none; stroke-width:1.7; stroke-linejoin:round; stroke-linecap:round; }
+.app.pose-open .rail-button small { color:inherit; font-size:10px; line-height:1.2; font-weight:600; }
+.app.pose-open .rail-button:active, .app.pose-open .rail-button:focus-visible { background:#f3e7dd; color:#58142a; }
+.app.pose-open .rail-button:hover { background:#f6f0e9; }
+.app.pose-open .rail-lock { margin-top:auto; max-height:none; border-top:1px solid #e7dedb; border-radius:0; color:#82424d; height:69px; }
+.app.pose-open .properties { right:80px; bottom:56px; border:1px solid #dbcfca; box-shadow: 0 12px 34px #20151c38; }
+.app.pose-open .placed-stamp.selected { border:1.5px solid #1283ff; outline:1px solid #fff; }
+.app.pose-open .placed-stamp.selected:before { inset:-4px; border:1px dotted #007aff; }
+.app.pose-open .resize-handle,.app.pose-open .rotate-handle { width:16px; height:16px; border-radius:50%; }
+@media (max-height:690px) {
+ .app.pose-open .topbar { height:49px;min-height:49px; }
+ .app.pose-open .workgrid { grid-template-columns:190px minmax(0,1fr) 56px; }
+ .app.pose-open .rail-button { height:56px; }
+ .app.pose-open .stamp-tile { aspect-ratio:1.12; }
+ .app.pose-open .library-panel { padding: 9px; }
+}
+@media (max-width:920px) {
+ .app.pose-open .brandline { min-width:40px; }
+ .app.pose-open .brandline>div { display:none; }
+ .app.pose-open .workgrid { grid-template-columns:185px minmax(0,1fr) 54px; gap:6px; }
+ .app.pose-open .library-panel { padding: 9px; }
+ .app.pose-open .rail-button { height:66px; }
+ .app.pose-open .rail-button svg { width:22px;height:22px; }
+ .app.pose-open .rail-button small { font-size:9px; }
+ .app.pose-open .save-button { padding:8px 9px; }
+ .app.pose-open .status-small { display:none; }
+}
+/* Duo's fold segments may have asymmetric usable widths. Avoid forcing first segment as oversized sidebar. */
+@media (horizontal-viewport-segments:2) {
+ .app.pose-open .workgrid { grid-template-columns: clamp(196px, 19vw, 252px) minmax(0,1fr) 62px; }
+}
+@media (device-posture:folded) {
+ .app.pose-open .workgrid { grid-template-columns: clamp(196px, 19vw, 252px) minmax(0,1fr) 62px; }
+ .app.pose-open .document-panel { margin-right:0; }
+ .app.pose-open .action-rail { position:static; width:auto; background:#fffdfa; }
+}
+@media (prefers-reduced-motion:reduce){.app.pose-open .page-scroller{scroll-behavior:auto}}
